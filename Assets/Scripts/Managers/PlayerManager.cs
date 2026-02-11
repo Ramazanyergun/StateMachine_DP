@@ -3,22 +3,16 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    private InputManager inputManager; 
+    private InputManager inputManager;
     private PlayerMovement playerMovement;
 
     void Awake()
     {
         inputManager = GetComponent<InputManager>();
 
-        try
-        {
-            playerMovement = GetComponent<PlayerMovement>();
-        }
-        catch (Exception e)
-        {
-            Debug.Log(e);
-        }
-   
+        playerMovement = GetComponent<PlayerMovement>();
+
+
     }
 
     void Update()
@@ -30,5 +24,5 @@ public class PlayerManager : MonoBehaviour
         if (playerMovement != null)
             playerMovement.HandleAllMovements();
     }
-    
+
 }

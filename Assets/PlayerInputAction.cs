@@ -100,6 +100,24 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""CrouchedWalk"",
+                    ""type"": ""Button"",
+                    ""id"": ""9114ce61-35c2-4dd0-bcdb-89efff3411a6"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Sprint"",
+                    ""type"": ""Button"",
+                    ""id"": ""88cddbdd-3a34-4cee-961d-b584865f0f08"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -157,6 +175,28 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d51cd19b-8cf6-4463-a381-44807b571bcf"",
+                    ""path"": ""<Keyboard>/leftCtrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CrouchedWalk"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""48594315-86c1-4bc1-9aa8-9eee6c6fca1c"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -166,6 +206,8 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         // Locomotion
         m_Locomotion = asset.FindActionMap("Locomotion", throwIfNotFound: true);
         m_Locomotion_Movement = m_Locomotion.FindAction("Movement", throwIfNotFound: true);
+        m_Locomotion_CrouchedWalk = m_Locomotion.FindAction("CrouchedWalk", throwIfNotFound: true);
+        m_Locomotion_Sprint = m_Locomotion.FindAction("Sprint", throwIfNotFound: true);
     }
 
     ~@PlayerInputAction()
@@ -247,6 +289,8 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Locomotion;
     private List<ILocomotionActions> m_LocomotionActionsCallbackInterfaces = new List<ILocomotionActions>();
     private readonly InputAction m_Locomotion_Movement;
+    private readonly InputAction m_Locomotion_CrouchedWalk;
+    private readonly InputAction m_Locomotion_Sprint;
     /// <summary>
     /// Provides access to input actions defined in input action map "Locomotion".
     /// </summary>
@@ -262,6 +306,14 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Locomotion/Movement".
         /// </summary>
         public InputAction @Movement => m_Wrapper.m_Locomotion_Movement;
+        /// <summary>
+        /// Provides access to the underlying input action "Locomotion/CrouchedWalk".
+        /// </summary>
+        public InputAction @CrouchedWalk => m_Wrapper.m_Locomotion_CrouchedWalk;
+        /// <summary>
+        /// Provides access to the underlying input action "Locomotion/Sprint".
+        /// </summary>
+        public InputAction @Sprint => m_Wrapper.m_Locomotion_Sprint;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -291,6 +343,12 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
+            @CrouchedWalk.started += instance.OnCrouchedWalk;
+            @CrouchedWalk.performed += instance.OnCrouchedWalk;
+            @CrouchedWalk.canceled += instance.OnCrouchedWalk;
+            @Sprint.started += instance.OnSprint;
+            @Sprint.performed += instance.OnSprint;
+            @Sprint.canceled += instance.OnSprint;
         }
 
         /// <summary>
@@ -305,6 +363,12 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
+            @CrouchedWalk.started -= instance.OnCrouchedWalk;
+            @CrouchedWalk.performed -= instance.OnCrouchedWalk;
+            @CrouchedWalk.canceled -= instance.OnCrouchedWalk;
+            @Sprint.started -= instance.OnSprint;
+            @Sprint.performed -= instance.OnSprint;
+            @Sprint.canceled -= instance.OnSprint;
         }
 
         /// <summary>
@@ -352,5 +416,19 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMovement(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "CrouchedWalk" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnCrouchedWalk(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Sprint" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSprint(InputAction.CallbackContext context);
     }
 }
