@@ -16,7 +16,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "CrouchedWalk",
+                    "name": "Crouch",
                     "type": "Button",
                     "id": "9114ce61-35c2-4dd0-bcdb-89efff3411a6",
                     "expectedControlType": "",
@@ -28,6 +28,15 @@
                     "name": "Sprint",
                     "type": "Button",
                     "id": "88cddbdd-3a34-4cee-961d-b584865f0f08",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "269a25fb-f018-46b6-b991-c0b3dfe746cc",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -97,7 +106,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "CrouchedWalk",
+                    "action": "Crouch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -109,6 +118,45 @@
                     "processors": "",
                     "groups": "",
                     "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bbe07338-58ef-482f-9f0b-bcefbf9232cb",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Camera",
+            "id": "0e7f3d03-0093-45c3-8dbe-a0e0ebf61aba",
+            "actions": [
+                {
+                    "name": "Follow",
+                    "type": "Value",
+                    "id": "5dfedeb4-d67c-474c-a103-992d9a993358",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1f8064c1-b18f-48e8-bbc9-25b684e3101f",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Follow",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

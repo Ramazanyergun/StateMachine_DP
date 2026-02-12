@@ -3,26 +3,30 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    private InputManager inputManager;
-    private PlayerMovement playerMovement;
-
+    private InputManager m_inputManager;
+    private PlayerMovement m_playerMovement;
+    private CameraManager m_cameraManager;
     void Awake()
     {
-        inputManager = GetComponent<InputManager>();
+        m_inputManager = GetComponent<InputManager>();
 
-        playerMovement = GetComponent<PlayerMovement>();
-
+        m_playerMovement = GetComponent<PlayerMovement>();
+        m_cameraManager = FindAnyObjectByType<CameraManager>();
 
     }
 
     void Update()
     {
-        inputManager.HandleAllInputs();
+        m_inputManager.HandleAllInputs();
     }
     void FixedUpdate()
     {
-        if (playerMovement != null)
-            playerMovement.HandleAllMovements();
+        if (m_playerMovement != null)
+            m_playerMovement.HandleAllMovements();
     }
-
+    void LateUpdate()
+    {
+        if (m_cameraManager != null)
+            m_cameraManager.HandleAllCameraMovement();
+    }
 }

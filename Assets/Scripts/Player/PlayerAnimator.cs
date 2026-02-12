@@ -2,28 +2,32 @@ using UnityEngine;
 
 public class PlayerAnimator : MonoBehaviour
 {
+    public Animator Animator { get; private set; }
 
-
-    public Animator m_animator { get; private set; }
     int speedHash;
-    int isCrouchedHash;
+    int crouchHash;
+    int groundedHash;
+    int jumpHash;
+
     void Awake()
     {
-        m_animator = GetComponentInChildren<Animator>();
-        
-        speedHash = Animator.StringToHash("speed");
-        isCrouchedHash = Animator.StringToHash("is_Crouching");
+        Animator = GetComponentInChildren<Animator>();
+
+        speedHash = Animator.StringToHash("Speed");
+        crouchHash = Animator.StringToHash("Crouch");
+        groundedHash = Animator.StringToHash("IsGrounded");
+        jumpHash = Animator.StringToHash("Jump");
     }
 
-    public void SetSpeed(float value)
+    public void UpdateAnimator(float speed, bool isGrounded, bool isCrouched)
     {
-        m_animator.SetFloat(speedHash, value, 0.1f, Time.deltaTime);
+        Animator.SetFloat(speedHash, speed, 0.1f, Time.deltaTime);
+        Animator.SetFloat(crouchHash, isCrouched ? 1f : 0f, 0.1f, Time.deltaTime);
+        Animator.SetBool(groundedHash, isGrounded);
     }
 
-    public void SetCrouch(bool value)
+    public void TriggerJump()
     {
-        m_animator.SetBool(isCrouchedHash, value);
+        Animator.SetTrigger(jumpHash);
     }
-
-
 }
