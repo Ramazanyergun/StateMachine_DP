@@ -1,17 +1,17 @@
-🎮 State Design Pattern in Unity
+# 🎮 State Design Pattern in Unity
 Ramazan YERGÜN
 
-This project demonstrates the implementation of the State Design Pattern and a modular State Machine architecture in Unity for managing player behavior and animations.
+> This project demonstrates the implementation of the State Design Pattern and a modular State Machine architecture in Unity for managing player behavior and animations.
 
 
-📌 Project Purpose
+# 📌 Project Purpose
 
 This project was created to better understand and implement the State Design Pattern within Unity.
 
 The main goal is to design a scalable and maintainable player state machine system that controls character behavior and animation transitions in a clean, modular way.
 
 
-🧠 State Machine Architecture
+# 🧠 State Machine Architecture
 
 The player controller is built using a State Machine architecture, where:
 
@@ -26,7 +26,7 @@ The system is easily extendable for adding new behaviors.
 This approach avoids complex conditional structures and improves maintainability.
 
 
-🎮 Current Player States
+# 🎮 Current Player States
 
 GroundedState
 
@@ -35,7 +35,7 @@ JumpState
 FallState
 
 
-✨ Features
+# ✨ Features
 
 State Machine-based player controller
 
@@ -48,7 +48,7 @@ Camera follow system
 Clean separation of responsibilities
 
 
-🚧 Work in Progress
+# 🚧 Work in Progress
 
 Refining transition conditions
 
@@ -57,13 +57,14 @@ Adding new states (e.g., Attack)
 Further optimization and refactoring
 
 
-🛠 Project Information
-Info	Value
-Unity Version	6000.0.58f2
-Render Pipeline	Built-in / URP
+## 🛠 Project Information
+|Info|	Value|
+|-------|-------|
+|Unity Version|	6000.0.58f2|
+|Render Pipeline|	Built-in / URP|
 
 
-🚀 Installation
+# 🚀 Installation
 
 Clone the repository:
 
@@ -77,7 +78,7 @@ Open: Assets/Scenes/SampleScene
 Press Play
  
 
-📚 What I Learned
+# 📚 What I Learned
 
 Practical implementation of the State Design Pattern
 
